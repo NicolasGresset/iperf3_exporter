@@ -81,3 +81,8 @@ You can then use promql syntax to query bandwith e.g
 (iperf3_received_bytes_down * 8)/(iperf3_duration_down * 1000000)
 ```
 to get the result in Mbps
+
+or succesfull sending rate with
+```
+iperf3_received_bytes_down / iperf3_sent_bytes_down
+```
