@@ -58,22 +58,25 @@ scrape_configs:
 ```plain
 # HELP iperf3_sent_bytes_down Number of bytes sent during the downlink test
 # TYPE iperf3_sent_bytes_down gauge
-iperf3_sent_bytes_down 2.74555576e+09
+iperf3_sent_bytes_down 3.35806464e+09
 # HELP iperf3_received_bytes_down Number of bytes received durng the downlink test
 # TYPE iperf3_received_bytes_down gauge
-iperf3_received_bytes_down 2.745434112e+09
+iperf3_received_bytes_down 3.35806464e+09
 # HELP iperf3_duration_down Duration in seconds of the downlink test
 # TYPE iperf3_duration_down gauge
-iperf3_duration_down 1.001003
+iperf3_duration_down 1.000209
 # HELP iperf3_sent_bytes_up Number of bytes sent during the uplink test
 # TYPE iperf3_sent_bytes_up gauge
-iperf3_sent_bytes_up 2.88489472e+09
+iperf3_sent_bytes_up 3.406692352e+09
 # HELP iperf3_received_bytes_up Number of bytes received durng the uplink test
 # TYPE iperf3_received_bytes_up gauge
-iperf3_received_bytes_up 2.884107156e+09
+iperf3_received_bytes_up 3.394895872e+09
 # HELP iperf3_duration_up Duration in seconds of the uplink test
 # TYPE iperf3_duration_up gauge
-iperf3_duration_up 1.000027
+iperf3_duration_up 1.000261
+# HELP iperf3_status Did the last scraped worked
+# TYPE iperf3_status gauge
+iperf3_status 1.0
 ```
 
 You can then use promql syntax to query bandwith e.g
@@ -86,3 +89,5 @@ or succesfull sending rate with
 ```
 iperf3_received_bytes_down / iperf3_sent_bytes_down
 ```
+
+If `iperf3_status` equals 0 i.e one of the test failed, all metrics are artificially set to 0 and should therefore not be considered.
